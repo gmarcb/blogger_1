@@ -7,7 +7,7 @@
 
 <p>
   <strong>Author:</strong>
-  <%= @blog_post.user.username %>
+ <%= link_to @blog_post.user.username, user_posts_path(id: @blog_post.user.id) %>
 </p>
 
 <p>
@@ -27,7 +27,7 @@
 	<% @blog_post.comments.each do |comment| %>
 	<div class="panel-body">
 	<p> On <%= comment.created_at.strftime('%m/%d/%Y at %I:%M%p') %></p>
-	<p><strong><%= comment.user.username %></strong> said:</p>
+	<p><strong><%= link_to comment.user.username, user_posts_path(id: comment.user.id) %></strong> said:</p>
 	<p><%= comment.comment_entry %></p>
 	</div>
 	
@@ -36,12 +36,20 @@
 
 </div>
 
-<div>
-<%= link_to 'Edit', edit_blog_post_path(@blog_post) %> 
+<%if current_user.id == @blog_post.user.id %>
+
+<div class="panel-footer">
+		<p>
+			<%= link_to 'Edit', edit_blog_post_path(@blog_post), class: "btn btn-warning" %>
+			<%= link_to 'Destroy', @blog_post, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
+		</p>
+
 </div>
+	
+<% end %>
 
 <div>
-<%= link_to 'Back', blog_posts_path %>
+	<%= link_to 'Back', blog_posts_path %>
 </div>
 
 

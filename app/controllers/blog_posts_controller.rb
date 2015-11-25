@@ -7,6 +7,16 @@ class BlogPostsController < ApplicationController
     @blog_posts = BlogPost.all
   end
 
+  def your_post
+  end
+
+  def user_posts
+  end
+
+  def user_posts
+    @user = User.find(params[:id])
+  end
+
   # GET /blog_posts/1
   # GET /blog_posts/1.json
   def show
