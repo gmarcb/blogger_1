@@ -17,3 +17,17 @@
  .cant-see-me {
  	display: none;
  }
+
+
+
+body {
+	padding-top: 1%
+	padding-bottom: 1%;
+	margin: 0px;
+	background-image: url(https://www.aclu.org/sites/default/files/styles/blog_index_wide_655x336/public/field_image/web15-siteimages-blog-main-2400x960-rel1.jpg?itok=ID1u4SNZ);
+
+}
+
+h1, h3 {
+	color: #47476b;
+}
